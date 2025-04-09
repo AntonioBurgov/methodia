@@ -1,4 +1,0 @@
-INDEX VERSION 1.134+/Users/antonioburgov/Desktop/nethodia/.metadata/.plugins/org.eclipse.jdt.core
-1865797976.index
-1870033659.index
-2999056678.index
