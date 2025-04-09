@@ -1,0 +1,36 @@
+package methodia;
+
+import java.util.*;
+
+public class task2 {
+    public static void main(String[] args) {
+    	
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter sentence: ");
+        String text = sc.nextLine().toLowerCase();
+        
+        text = text.replaceAll("[^a-z\\s]", " ");
+        
+        String[] words = Arrays.stream(text.split("\\s+"))
+                              .filter(word -> !word.isEmpty())
+                              .toArray(String[]::new);
+        
+        Map<String, Integer> counter = new HashMap<>();
+        for (String word : words) {
+            counter.put(word, counter.getOrDefault(word, 0) + 1);
+        }
+        
+        List<Map.Entry<String, Integer>> sortedEntries = new ArrayList<>(counter.entrySet());
+        sortedEntries.sort((a, b) -> {
+            int freqCompare = b.getValue().compareTo(a.getValue());
+            return freqCompare != 0 ? freqCompare : a.getKey().compareTo(b.getKey());
+        });
+        
+        System.out.println("\nWord counts:");
+        for (Map.Entry<String, Integer> entry : sortedEntries) {
+            System.out.println(entry.getKey() + ": " + entry.getValue());
+        }
+        
+        sc.close(); 
+    }
+}
